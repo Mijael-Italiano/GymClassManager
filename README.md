@@ -103,10 +103,10 @@ La arquitectura permite incorporar autenticación en el futuro si el contexto lo
 
 ##  Ejecución del proyecto
 
-1. Crear la base de datos en SQL Server utilizando `GimnasioBD.sql`
-2. Configurar la cadena de conexión en `App.config`
-3. Abrir la solución `TPFinal.sln`
-4. Ejecutar el proyecto `TPFinal`
+1. Ejecutar el script GimnasioBD.sql en SQL Server para crear la base de datos.
+2. Configurar la cadena de conexión en App.config según la instancia local de SQL Server.
+3. Abrir la solución TPFinal.sln.
+4. Ejecutar el proyecto TPFinal.
 
 ---
 
