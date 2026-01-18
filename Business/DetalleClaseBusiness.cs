@@ -73,16 +73,36 @@ namespace Business
             if (detalle.profesor == null)
                 throw new Exception("Debe seleccionar un profesor.");
 
-            if (detalle.Horario_Inicio.TotalHours < 6 || detalle.Horario_Fin.TotalHours > 22)
+            if (detalle.Horario_Inicio < TimeSpan.FromHours(6) ||
+                detalle.Horario_Fin >= TimeSpan.FromHours(22).Add(TimeSpan.FromMinutes(1)))
+            {
                 throw new Exception("El horario debe estar entre las 06:00 y las 22:00.");
+            }
 
 
             foreach (var turno in turnosExistentes)
             {
                 if (turno.Dia == detalle.Dia)
                 {
-                    bool seSolapa = detalle.Horario_Inicio < turno.Horario_Fin &&
-                                    detalle.Horario_Fin > turno.Horario_Inicio;
+                    var inicioNuevo = TimeSpan.FromMinutes(
+                        Math.Round(detalle.Horario_Inicio.TotalMinutes)
+                    );
+
+                    var finNuevo = TimeSpan.FromMinutes(
+                        Math.Round(detalle.Horario_Fin.TotalMinutes)
+                    );
+
+                    var inicioExistente = TimeSpan.FromMinutes(
+                        Math.Round(turno.Horario_Inicio.TotalMinutes)
+                    );
+
+                    var finExistente = TimeSpan.FromMinutes(
+                        Math.Round(turno.Horario_Fin.TotalMinutes)
+                    );
+
+                    bool seSolapa =
+                        inicioNuevo < finExistente &&
+                        finNuevo > inicioExistente;
 
                     if (seSolapa)
                     {
