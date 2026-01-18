@@ -136,6 +136,6 @@ Se incluye un **Manual de Usuario** en formato PDF con una descripción funciona
 
 ---
 
-## 👤 Autor
+##  Autor
 
 Proyecto desarrollado como parte de formación académica y adaptado posteriormente como proyecto de portfolio personal.
