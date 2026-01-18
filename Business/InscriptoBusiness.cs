@@ -13,7 +13,7 @@ namespace Business
     {
         InscriptoData inscriptoData = new InscriptoData();
         ClaseBusiness claseBusiness = new ClaseBusiness();
-        public event EventHandler<ClaseLlenaEventArgs> ClaseLlena;
+
         public List<Inscripto> GetLista()
         {
             try
@@ -129,8 +129,7 @@ namespace Business
                 {
                     if (cantidadInscriptos >= maximoInscriptos)
                     {
-                        ClaseLlena?.Invoke(this, new ClaseLlenaEventArgs(idClase, idInscripto));
-                        return; 
+                        throw new Exception("La clase ya alcanzó el máximo de inscriptos.");
                     }
                     int? idClaseActual = inscriptoData.GetIdClaseDeInscripto(idInscripto);
 

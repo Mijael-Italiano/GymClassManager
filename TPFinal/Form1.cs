@@ -24,8 +24,6 @@ namespace TPFinal
             LlenarGrillaProfesor();
             CargarComboDisciplinaClase();
             CargarComboDisciplinaProfesor();
-            inscriptoBusiness.ClaseLlena += InscriptoBusiness_ClaseLlena;
-
 
         }
 
@@ -182,16 +180,34 @@ namespace TPFinal
                 MessageBox.Show("Debe seleccionar un inscripto y una clase.");
                 return;
             }
-            else
+
+            try
             {
                 int idInscripto = Convert.ToInt32(grillaInscripto.SelectedRows[0].Cells["ID_Inscripto"].Value);
                 int idClase = Convert.ToInt32(grillaClase.SelectedRows[0].Cells["ID_Clase"].Value);
                 int cantidadInscriptos = Convert.ToInt32(grillaClase.SelectedRows[0].Cells["Cantidad Inscriptos"].Value);
                 int maximoInscriptos = Convert.ToInt32(grillaClase.SelectedRows[0].Cells["Maximo Inscriptos"].Value);
 
-                inscriptoBusiness.AsignarClaseAInscripto(idInscripto, idClase, maximoInscriptos, cantidadInscriptos);
+                inscriptoBusiness.AsignarClaseAInscripto(
+                    idInscripto,
+                    idClase,
+                    maximoInscriptos,
+                    cantidadInscriptos
+                );
+
                 LlenarGrillaInscripto();
                 LlenarGrillaClase();
+            }
+            catch (Exception ex)
+            {
+                string mensaje = ex.InnerException?.Message ?? ex.Message;
+
+                MessageBox.Show(
+                    mensaje,
+                    "No se pudo asignar la clase",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
             }
         }
 
@@ -435,9 +451,5 @@ namespace TPFinal
             }
         }
 
-        private void InscriptoBusiness_ClaseLlena(object sender, ClaseLlenaEventArgs e)
-        {
-            MessageBox.Show("Esta clase está llena", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
     }
 }
