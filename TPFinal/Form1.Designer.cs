@@ -53,9 +53,9 @@
             btnMostrarListaCompletaClases = new Button();
             button10 = new Button();
             GbInscriptos = new GroupBox();
+            button9 = new Button();
             GbClases = new GroupBox();
             GbProfesores = new GroupBox();
-            button9 = new Button();
             ((System.ComponentModel.ISupportInitialize)grillaInscripto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)grillaClase).BeginInit();
             ((System.ComponentModel.ISupportInitialize)grillaProfesor).BeginInit();
@@ -241,7 +241,7 @@
             button7.Name = "button7";
             button7.Size = new Size(121, 44);
             button7.TabIndex = 19;
-            button7.Text = "Mostrar Alumnos Por Clase";
+            button7.Text = "Mostrar Inscriptos Por Clase";
             button7.UseVisualStyleBackColor = true;
             button7.Click += button7_Click;
             // 
@@ -309,6 +309,16 @@
             GbInscriptos.TabStop = false;
             GbInscriptos.Text = "Inscriptos";
             // 
+            // button9
+            // 
+            button9.Location = new Point(311, 387);
+            button9.Name = "button9";
+            button9.Size = new Size(115, 44);
+            button9.TabIndex = 23;
+            button9.Text = "Mostrar Inscriptos sin Clase";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
+            // 
             // GbClases
             // 
             GbClases.Controls.Add(grillaClase);
@@ -343,16 +353,6 @@
             GbProfesores.TabIndex = 29;
             GbProfesores.TabStop = false;
             GbProfesores.Text = "Profesores";
-            // 
-            // button9
-            // 
-            button9.Location = new Point(311, 387);
-            button9.Name = "button9";
-            button9.Size = new Size(115, 44);
-            button9.TabIndex = 23;
-            button9.Text = "Mostrar Alumnos sin Clase";
-            button9.UseVisualStyleBackColor = true;
-            button9.Click += button9_Click;
             // 
             // Form1
             // 
